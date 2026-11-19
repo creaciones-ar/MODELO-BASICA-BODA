@@ -1,0 +1,116 @@
+/* TEMA BODA — marfil + dorado + marrón (paleta tomada del video de ejemplo)
+   Se carga DESPUÉS de styles.css:  <link rel="stylesheet" href="tema-boda.css">
+   Para cambiar de paleta (ej: otra pareja con otros colores) solo se tocan las variables de abajo. */
+
+:root{
+  /* PALETA */
+  --gold:#b4890c;          /* dorado principal (títulos, detalles) */
+  --gold-l:#e6c964;        /* dorado claro (brillo) */
+  --gold-d:#7d5c08;        /* dorado oscuro (sombra) */
+  --gold-m:#c2a44e;        /* dorado medio (marcos, líneas) */
+  --brown:#6b4f33;         /* marrón de textos */
+  --cream:#faf9f6;         /* fondo marfil */
+  --cream-2:#f4f1e9;
+  --cream-3:#eae4d2;
+  --sage:#9d9682;          /* verde salvia de las hojas */
+  --gold-text:linear-gradient(175deg,#e6c964 0%,#b4890c 45%,#8a6508 100%);
+
+  /* Variables que ya usaba styles.css */
+  --navy:var(--brown);
+  --blue:var(--gold);
+  --sky:var(--cream-3);
+  --silver:var(--sage);
+  --base:var(--cream);
+  --frame:var(--gold-m);
+
+  /* Fondos florales (recortados del diseño) */
+  --img-arriba:url('fondo-arriba.webp');
+  --img-abajo:url('fondo-abajo.webp');
+  --img-centro:url('fondo-flores.webp');
+}
+
+body{background:linear-gradient(var(--cream),var(--cream-2)) fixed}
+
+/* Las imágenes florales son horizontales y bajas: ajustamos la proporción */
+#welcome-screen::before,.page::before{aspect-ratio:1080/390}
+#welcome-screen::after,.page::after{aspect-ratio:1080/360}
+#welcome-screen{background:var(--cream)}
+#main-content{box-shadow:0 0 40px rgba(125,92,8,.15)}
+
+/* ===== Títulos con degradé dorado ===== */
+.neon,.letter-name,
+.date-section .script.big,.place-info .script.big,
+.center-section .script.big,.rsvp-card .script.big,
+.closing .script.big,.modal-title{
+  background:var(--gold-text);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:none;
+  filter:drop-shadow(0 1px 1px rgba(125,92,8,.25));
+}
+.welcome-sub,.welcome-hint{color:var(--brown);text-shadow:0 0 8px rgba(255,255,255,.95)}
+.date-day b{background:var(--gold-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.date-day{border-color:var(--gold-m)}
+
+/* ===== Sobre marfil con sello dorado ===== */
+.envelope{filter:drop-shadow(0 18px 26px rgba(125,92,8,.35))}
+.env-back{background:linear-gradient(#e2d9bd,#d3c8a4)}
+.env-l{background:linear-gradient(90deg,#f7f4ec,#e9e2cc)}
+.env-r{background:linear-gradient(270deg,#f7f4ec,#e9e2cc)}
+.env-b{background:linear-gradient(#fbfaf5,#eae4d2)}
+.env-flap{background:linear-gradient(#fbfaf5,#e9e2cc)}
+.envelope.open .env-flap{background:linear-gradient(#d9cfae,#cbbf97)}
+.env-letter{background:linear-gradient(#ffffff,#f6f3ea);box-shadow:0 2px 8px rgba(125,92,8,.3)}
+.letter-small{color:var(--brown)}
+.letter-line{background:var(--gold-m)}
+.env-orn::before{border-color:rgba(180,137,12,.55)}
+.orn{stroke:rgba(180,137,12,.9)}
+.orn circle{fill:var(--gold)}
+.sp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c9a227' d='M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z'/%3E%3C/svg%3E");filter:drop-shadow(0 0 3px rgba(230,201,100,.9))}
+.seal{background:radial-gradient(circle at 32% 28%,#fff6c4 0,#e6c964 25%,#b4890c 65%,#7d5c08 100%);
+  box-shadow:0 5px 12px rgba(125,92,8,.55),inset 0 2px 3px rgba(255,255,255,.8),inset 0 -4px 6px rgba(90,60,0,.45)}
+.seal span{color:#fff8dc;text-shadow:0 1px 1px rgba(90,60,0,.7);-webkit-text-fill-color:#fff8dc;background:none;font-size:1.25rem;letter-spacing:-.02em}
+.seal::before{border-color:rgba(230,201,100,.95)}
+.seal::after{border-color:rgba(255,246,196,.55);box-shadow:inset 0 2px 4px rgba(90,60,0,.35)}
+
+/* ===== Botones, reproductor, regalo ===== */
+.btn.solid{
+  color:#fff8dc;text-shadow:0 1px 1px rgba(90,60,0,.6);
+  background:linear-gradient(90deg,#8a6508 0%,#b4890c 50%,#8a6508 100%) padding-box,
+             linear-gradient(90deg,#c2a44e,#fff6c4 50%,#c2a44e) border-box;
+  box-shadow:0 0 0 3px #d8c27a,0 5px 10px rgba(125,92,8,.3),
+             inset 0 2px 3px rgba(255,255,255,.35),inset 0 -3px 5px rgba(90,60,0,.35)}
+.controls .play{background:radial-gradient(circle at 50% 30%,#e6c964,#b4890c 60%,#7d5c08);border-color:#fff6c4;
+  box-shadow:0 0 0 4px #d8c27a,0 6px 14px rgba(125,92,8,.35),inset 0 -3px 5px rgba(90,60,0,.3)}
+#progress{accent-color:var(--gold)}
+.swatches i{box-shadow:0 2px 6px rgba(125,92,8,.3),inset 0 0 0 1px rgba(255,255,255,.5)}
+.sw-claro{background:#f4f1e9;box-shadow:0 2px 6px rgba(125,92,8,.3),inset 0 0 0 1px #c2a44e}
+.sw-medio{background:#c2a44e}
+.sw-noche{background:#6b4f33}
+
+/* ===== Fotos con marco dorado ===== */
+.polaroid{border-color:var(--gold-m);box-shadow:0 8px 18px rgba(125,92,8,.28)}
+.polaroid.framed{filter:drop-shadow(0 8px 14px rgba(125,92,8,.25))}
+.place-photo{filter:drop-shadow(0 6px 12px rgba(125,92,8,.22))}
+.rsvp-card{background:rgba(255,255,255,.72)}
+
+/* ===== Ventana de datos ===== */
+.modal{background:rgba(60,42,12,.5)}
+.modal-card{color:var(--brown)}
+.data-row{border-top-color:rgba(180,137,12,.3)}
+.modal-close{color:var(--brown)}
+
+/* ===== Secciones nuevas de boda ===== */
+.ico-deco{display:block;margin:0 auto 4px;width:74px;height:auto}
+.divider{width:140px;height:12px;margin:2px auto;background:
+  linear-gradient(90deg,transparent,var(--gold-m) 30%,var(--gold-m) 70%,transparent) center/100% 1px no-repeat}
+.names-couple{font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:600;line-height:1.5}
+.names-couple small{display:block;font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.names-couple span{display:block;font-size:1.25rem;font-weight:500}
+.event-line{font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:600;font-size:1.3rem;display:flex;gap:8px;align-items:center;justify-content:center}
+.event-line b{color:var(--gold)}
+.event-sub{font-family:var(--serif);font-size:1.05rem;font-weight:500;opacity:.9}
+.cover-names{margin:8px 0 10px;font-size:clamp(3.4rem,17vw,5rem);line-height:1.05}
+.cover-kicker{font-family:var(--serif);letter-spacing:.35em;padding-left:.35em;text-transform:uppercase;font-size:1rem;font-weight:600;color:var(--gold)}
+.cover-photo{width:min(78%,320px);border-radius:200px 200px 8px 8px;border:5px solid var(--gold-m);box-shadow:0 10px 22px rgba(125,92,8,.3);margin:6px auto 4px;display:block}
+.cover{padding-top:150px}

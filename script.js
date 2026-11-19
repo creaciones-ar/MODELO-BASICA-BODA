@@ -1,15 +1,16 @@
 /* ===== CONFIGURACIÓN (editar solo acá) ===== */
 const CONFIG = {
-  fecha: "December 12, 2026 21:00:00",        // sábado 12 de diciembre, 21:00 (HORA PROVISORIA: confirmar con Valentina)
   youtubeId: "Zg8L-Pfroww",                   // código del video de YouTube de la canción. Vacío = no aparece el reproductor
   inicio: 15,                                 // segundo desde el que suena la canción (30 = salta la intro)
   whatsapp: "5491158265942",                  // 54 + 9 + número (CONFIRMAR que sea el de Valentina)
   mapsUrl: "https://maps.app.goo.gl/wMsCjcH23YjNU4ht8?g_st=aw",   // link de Google Maps del salón. Vacío = no aparece el botón
   alias: "valen.zof",                         // alias o CBU (CONFIRMAR). Vacío = no aparece la sección de regalos
   cvu: "0000003100015179991057",              // CVU o CBU. Vacío = no aparece esa fila
-  titular: "Valentina Jazmín Zof",            // nombre del titular de la cuenta
-  confirmarAntes: "Confirmar antes del 1 de diciembre",   // Vacío = no aparece
-  mensajeWa: "Hola! Confirmo mi asistencia a los XV de Valentina"
+  fecha: "January 16, 2027 20:00:00",
+  mensajeWa: "Hola! Confirmo mi asistencia a la boda de Laura y Diego",
+  titular: "Laura ... / Diego ...",
+  confirmarAntes: "Confirmar antes del ...",
+  
 };
 
 const $ = id => document.getElementById(id);

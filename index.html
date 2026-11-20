@@ -218,21 +218,27 @@
   </div>
 </div>
 
-<script src="script.js?v=52"></script>
+<script src="script.js?v=51"></script>
 <script>
-/* Portada: agranda "Laura & Diego" hasta ocupar todo el ancho disponible (en cualquier celular) */
+/* Portada: agranda "Laura & Diego" en UNA línea hasta ocupar el ancho disponible (en cualquier celular).
+   Fuerza nowrap por sí mismo, así no depende de la versión del CSS que tenga cargada el navegador. */
 (function(){
   function fitNames(){
     var el=document.querySelector('.cover-names'),c=document.querySelector('.cover');
     if(!el||!c||!c.clientWidth)return;
+    el.style.whiteSpace='nowrap';el.style.display='inline-block';el.style.maxWidth='none';
     var cs=getComputedStyle(c),w=c.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
-    var lo=30,hi=140;
-    for(var i=0;i<12;i++){var m=(lo+hi)/2;el.style.fontSize=m+'px';if(el.getBoundingClientRect().width>w+2*0.22*m)hi=m;else lo=m;}
+    var lo=24,hi=Math.min(120,w/3);                      // tope razonable: nunca más de 1/3 del ancho en px
+    for(var i=0;i<14;i++){
+      var m=(lo+hi)/2;el.style.fontSize=m+'px';
+      if(el.getBoundingClientRect().width>w+0.44*m)hi=m;else lo=m;   // 0.44em = margen interno del degradé
+    }
     el.style.fontSize=lo+'px';
   }
   var mc=document.getElementById('main-content');
   new MutationObserver(fitNames).observe(mc,{attributes:true,attributeFilter:['class']});
   window.addEventListener('resize',fitNames);
+  window.addEventListener('load',fitNames);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitNames);
 })();
 </script>

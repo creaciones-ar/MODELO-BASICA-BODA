@@ -413,3 +413,7 @@ body{background:linear-gradient(var(--cream),var(--cream-2)) fixed}
   border-radius:999px 999px 10px 10px;border:0;background:var(--cream-3);
   outline:2px solid var(--gold-m);outline-offset:7px;box-shadow:0 12px 24px rgba(125,92,8,.3)}
 .cover{padding-top:150px}
+
+/* La carta sube al abrir el sobre: el texto va en la parte de arriba para que no lo tapen las solapas diagonales */
+.env-letter{justify-content:flex-start;padding-top:11%;gap:6px}
+.env-letter .letter-small:last-child{font-size:.56rem;letter-spacing:.18em;white-space:nowrap}

@@ -324,16 +324,25 @@ img.ico-gif:not([src]){display:none}
 body{background:linear-gradient(var(--cream),var(--cream-2)) fixed}
 
 /* Las imágenes florales son horizontales y bajas: ajustamos la proporción */
-#welcome-screen::before,.page::before{aspect-ratio:1080/390}
-#welcome-screen::after,.page::after{aspect-ratio:1080/360}
+/* Alto de las franjas de flores (ancho/alto). Con otra imagen de fondo NO se estira: se recorta para llenar.
+   Si queda muy cortada o con mucho aire, solo cambiá estos dos números. */
+:root{--ratio-arriba:1080/410;--ratio-abajo:1080/400}
+#welcome-screen::before,.page::before{aspect-ratio:var(--ratio-arriba)}
+#welcome-screen::after,.page::after{aspect-ratio:var(--ratio-abajo)}
+#welcome-screen::before,#welcome-screen::after,.page::before,.page::after{background-size:cover}
+/* Las flores ya tienen transparencia propia: sin máscara y sin rectángulo de fondo */
+#welcome-screen::before,#welcome-screen::after,.page::before,.page::after{-webkit-mask-image:none;mask-image:none}
+.page::before,.page::after{left:-6%;right:-6%}
+.respiro::before{background-position:center bottom!important}
 #welcome-screen{background:var(--cream)}
 #main-content{box-shadow:0 0 40px rgba(125,92,8,.15)}
 
 /* ===== Títulos con degradé dorado ===== */
-.neon,.letter-name,
+.neon,.letter-name,.cover-names,
 .date-section .script.big,.place-info .script.big,
 .center-section .script.big,.rsvp-card .script.big,
 .closing .script.big,.modal-title{
+  padding-inline:.22em;margin-inline:-.22em;padding-top:.06em;padding-bottom:.14em;   /* evita que se corten los rulos de las letras */
   background:var(--gold-text);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
@@ -402,7 +411,9 @@ body{background:linear-gradient(var(--cream),var(--cream-2)) fixed}
 .event-line{font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:600;font-size:1.3rem;display:flex;gap:8px;align-items:center;justify-content:center}
 .event-line b{color:var(--gold)}
 .event-sub{font-family:var(--serif);font-size:1.05rem;font-weight:500;opacity:.9}
-.cover-names{margin:8px 0 10px;font-size:clamp(3.4rem,17vw,5rem);line-height:1.05}
-.cover-kicker{font-family:var(--serif);letter-spacing:.35em;padding-left:.35em;text-transform:uppercase;font-size:1rem;font-weight:600;color:var(--gold)}
-.cover-photo{width:min(78%,320px);border-radius:200px 200px 8px 8px;border:5px solid var(--gold-m);box-shadow:0 10px 22px rgba(125,92,8,.3);margin:6px auto 4px;display:block}
+.cover-names{margin-top:8px;margin-bottom:16px;font-size:clamp(3.8rem,18vw,5.6rem);line-height:1.1;white-space:nowrap;display:inline-block}
+.cover-kicker{font-family:var(--serif);letter-spacing:.4em;padding-left:.4em;text-transform:uppercase;font-size:1.35rem;font-weight:700;color:var(--gold);margin-top:6px}
+.cover-photo{width:min(78%,320px);aspect-ratio:3/4;object-fit:cover;object-position:center 25%;display:block;margin:14px auto 6px;
+  border-radius:999px 999px 10px 10px;border:0;background:var(--cream-3);
+  outline:2px solid var(--gold-m);outline-offset:7px;box-shadow:0 12px 24px rgba(125,92,8,.3)}
 .cover{padding-top:150px}

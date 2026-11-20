@@ -323,17 +323,13 @@ img.ico-gif:not([src]){display:none}
 
 body{background:linear-gradient(var(--cream),var(--cream-2)) fixed}
 
-/* Las imágenes florales son horizontales y bajas: ajustamos la proporción */
-/* Alto de las franjas de flores (ancho/alto). Con otra imagen de fondo NO se estira: se recorta para llenar.
-   Si queda muy cortada o con mucho aire, solo cambiá estos dos números. */
-:root{--ratio-arriba:1080/410;--ratio-abajo:1080/400}
+/* Franjas de flores: proporción de tus imágenes fondo-arriba / fondo-abajo (ancho/alto).
+   Valor original 736/597. Con otra imagen NO se estira (se recorta); si queda cortada, cambiá estos números.
+   El degradé que desvanece el borde (máscara) es el de la sección 3 y se mantiene. */
+:root{--ratio-arriba:736/597;--ratio-abajo:736/597}
 #welcome-screen::before,.page::before{aspect-ratio:var(--ratio-arriba)}
 #welcome-screen::after,.page::after{aspect-ratio:var(--ratio-abajo)}
 #welcome-screen::before,#welcome-screen::after,.page::before,.page::after{background-size:cover}
-/* Las flores ya tienen transparencia propia: sin máscara y sin rectángulo de fondo */
-#welcome-screen::before,#welcome-screen::after,.page::before,.page::after{-webkit-mask-image:none;mask-image:none}
-.page::before,.page::after{left:-6%;right:-6%}
-.respiro::before{background-position:center bottom!important}
 #welcome-screen{background:var(--cream)}
 #main-content{box-shadow:0 0 40px rgba(125,92,8,.15)}
 
